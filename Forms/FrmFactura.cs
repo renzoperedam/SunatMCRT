@@ -38,6 +38,12 @@ public partial class FrmFactura : Form
         lblIgv.Text = $"IGV: S/ {factura.ImpuestoCalculado:N2}";
         lblTotal.Text = $"Total a pagar: S/ {factura.MontoTotal:N2}";
         MessageBox.Show("Factura registrada correctamente.", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        if (!ValidarMontoFactura(txtMontoBase.Text.Trim(), out decimal montoBase))
+        {
+            txtMontoBase.Focus();
+            return;
+        }
     }
 
     private void btnLimpiar_Click(object sender, EventArgs e)
