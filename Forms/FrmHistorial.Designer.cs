@@ -8,6 +8,9 @@ partial class FrmHistorial
     private DataGridView dgvHistorial;
     private Button btnActualizar;
     private Button btnCerrar;
+    private Label lblBuscarRuc;
+    private TextBox txtBuscarRuc;
+    private Button btnBuscar;
 
     protected override void Dispose(bool disposing)
     {
@@ -22,6 +25,9 @@ partial class FrmHistorial
         dgvHistorial = new DataGridView();
         btnActualizar = new Button();
         btnCerrar = new Button();
+        lblBuscarRuc = new Label();
+        txtBuscarRuc = new TextBox();
+        btnBuscar = new Button();
         panel2 = new Panel();
         panel3 = new Panel();
         pictureBox1 = new PictureBox();
@@ -85,6 +91,32 @@ partial class FrmHistorial
         btnCerrar.Text = "Cerrar";
         btnCerrar.Click += btnCerrar_Click;
         // 
+        // lblBuscarRuc
+        // 
+        lblBuscarRuc.AutoSize = true;
+        lblBuscarRuc.Location = new Point(12, 15);
+        lblBuscarRuc.Name = "lblBuscarRuc";
+        lblBuscarRuc.Size = new Size(72, 15);
+        lblBuscarRuc.TabIndex = 0;
+        lblBuscarRuc.Text = "Buscar RUC";
+        // 
+        // txtBuscarRuc
+        // 
+        txtBuscarRuc.Location = new Point(90, 12);
+        txtBuscarRuc.Name = "txtBuscarRuc";
+        txtBuscarRuc.Size = new Size(220, 23);
+        txtBuscarRuc.TabIndex = 1;
+        // 
+        // btnBuscar
+        // 
+        btnBuscar.Location = new Point(320, 11);
+        btnBuscar.Name = "btnBuscar";
+        btnBuscar.Size = new Size(90, 25);
+        btnBuscar.TabIndex = 2;
+        btnBuscar.Text = "Buscar";
+        btnBuscar.UseVisualStyleBackColor = true;
+        btnBuscar.Click += btnBuscar_Click;
+        // 
         // panel2
         // 
         panel2.BackColor = Color.WhiteSmoke;
@@ -125,6 +157,9 @@ partial class FrmHistorial
         Controls.Add(dgvHistorial);
         Controls.Add(btnActualizar);
         Controls.Add(btnCerrar);
+        Controls.Add(btnBuscar);
+        Controls.Add(txtBuscarRuc);
+        Controls.Add(lblBuscarRuc);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         Margin = new Padding(3, 4, 3, 4);
         MaximizeBox = false;
@@ -135,9 +170,15 @@ partial class FrmHistorial
         panel2.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         ResumeLayout(false);
+        PerformLayout();
+    }
+    private void btnBuscar_Click(object sender, EventArgs e)
+    {
+        // Funcionalidad pendiente para siguiente commit
     }
 
     private Panel panel2;
     private Panel panel3;
     private PictureBox pictureBox1;
 }
+
