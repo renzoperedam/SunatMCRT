@@ -172,10 +172,7 @@ partial class FrmHistorial
         ResumeLayout(false);
         PerformLayout();
     }
-    private void btnBuscar_Click(object sender, EventArgs e)
-    {
-        // Funcionalidad pendiente para siguiente commit
-    }
+
 
     private Panel panel2;
     private Panel panel3;
