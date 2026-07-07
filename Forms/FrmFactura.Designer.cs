@@ -209,6 +209,28 @@ partial class FrmFactura
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         ResumeLayout(false);
         PerformLayout();
+
+    }
+
+    private bool ValidarRucFactura(string ruc)
+    {
+        if (string.IsNullOrWhiteSpace(ruc))
+        {
+            MessageBox.Show("Ingrese el RUC del contribuyente.", "Validación",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        if (ruc.Length != 11 || !ruc.All(char.IsDigit))
+        {
+            MessageBox.Show("El RUC debe contener exactamente 11 dígitos numéricos.", "Validación",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+
+
+        }
+
+        return true;
     }
 
     private Panel panel2;
