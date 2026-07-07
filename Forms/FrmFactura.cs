@@ -50,6 +50,26 @@ public partial class FrmFactura : Form
         txtRuc.Focus();
     }
 
+    private bool ValidarMontoFactura(string textoMonto, out decimal montoBase)
+    {
+        montoBase = 0;
+
+        if (!decimal.TryParse(textoMonto, out montoBase))
+        {
+            MessageBox.Show("Ingrese un monto base válido.", "Validación",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        if (montoBase <= 0)
+        {
+            MessageBox.Show("El monto base debe ser mayor a cero.", "Validación",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        return true;
+    }
     private bool ValidarRucFactura(string ruc)
     {
         if (string.IsNullOrWhiteSpace(ruc))
