@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -16,7 +17,26 @@ public partial class FrmHistorial : Form
         _servicio = servicio;
         InitializeComponent();
         ConfigurarHistorialGrid();
+        ConfigurarBusqueda();
         CargarHistorial();
+    }
+
+    private void ConfigurarBusqueda()
+    {
+        txtBuscarRuc.PlaceholderText = "Ingrese RUC";
+        AcceptButton = btnBuscar;
+        txtBuscarRuc.KeyDown += txtBuscarRuc_KeyDown;
+    }
+
+    private void txtBuscarRuc_KeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.KeyCode != Keys.Enter)
+        {
+            return;
+        }
+
+        e.SuppressKeyPress = true;
+        FiltrarPorRuc();
     }
 
     private void ConfigurarHistorialGrid()
@@ -50,6 +70,7 @@ public partial class FrmHistorial : Form
     {
         _historialCompleto = _servicio.ObtenerHistorial().ToList();
         MostrarHistorial(_historialCompleto);
+        txtBuscarRuc.Focus();
     }
 
     private void MostrarHistorial(IEnumerable<Comprobante> comprobantes)
@@ -69,6 +90,12 @@ public partial class FrmHistorial : Form
 
         dgvHistorial.DataSource = datos;
         lblTotalRegistros.Text = $"Total de registros: {datos.Count}";
+        lblTotalRegistros.ForeColor = datos.Count == 0 ? Color.Firebrick : SystemColors.ControlText;
+
+        if (datos.Count > 0)
+        {
+            dgvHistorial.ClearSelection();
+        }
     }
 
     private void FiltrarPorRuc()
