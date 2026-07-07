@@ -1,0 +1,12 @@
+Commits realizados en la rama lider:
+
+1. agregar documentacion de versiones del sistema
+2. agregar control de configuracion del proyecto
+3. agregar linea base del sistema MCRT
+4. agregar guia rapida para evaluacion final
+5. documentar versiones funcionales de la rama main
+6. agregar plan de integracion de ramas
+7. actualizar readme con resumen del proyecto y ramas
+8. preparar rama lider para integracion final
+
+La rama lider centraliza la documentación, control de configuración, línea base e integración de las ramas de cada integrante.
