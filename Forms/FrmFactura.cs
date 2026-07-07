@@ -44,6 +44,12 @@ public partial class FrmFactura : Form
             txtMontoBase.Focus();
             return;
         }
+
+        decimal igv = CalcularIGV(montoBase);
+        decimal total = CalcularTotalFactura(montoBase, igv);
+
+        lblIGV.Text = $"IGV 18%: S/ {igv:N2}";
+        lblTotal.Text = $"Total a pagar: S/ {total:N2}";
     }
 
     private void btnLimpiar_Click(object sender, EventArgs e)
@@ -95,6 +101,17 @@ public partial class FrmFactura : Form
         }
 
         return true;
+    }
+
+    private decimal CalcularIGV(decimal montoBase)
+    {
+        const decimal tasaIGV = 0.18m;
+        return montoBase * tasaIGV;
+    }
+
+    private decimal CalcularTotalFactura(decimal montoBase, decimal igv)
+    {
+        return montoBase + igv;
     }
 
     private void btnCerrar_Click(object sender, EventArgs e) => Close();
